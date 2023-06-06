@@ -1,0 +1,32 @@
+.buttom {
+  background: linear-gradient(150deg, #0000002b, #ffffff, #0000002b);
+  color: #000;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 10px 10px 10px -3px rgba(0, 0, 0, 0.48);
+  font-family: "Righteous";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttomsIcon {
+  width: 30px;
+  height: auto;
+  margin-right: 10px;
+}
+
+@media (max-width: 1000px) {
+  .buttom {
+    padding: 5px;
+    border-radius: 50px;
+    font-size: 12px;
+  }
+  .buttomsIcon {
+    width: 25px;
+  }
+}

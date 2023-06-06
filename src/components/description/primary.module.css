@@ -1,0 +1,31 @@
+.introduction {
+  width: 50vw;
+  text-align: justify;
+  margin-right: 20px;
+  font-family: "Hind Siliguri", sans-serif;
+}
+
+.icon {
+  width: 10vw;
+  height: auto;
+  margin-right: 30px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .introduction {
+    width: 70vw;
+    font-size: 12px;
+    margin-right: 0;
+  }
+}

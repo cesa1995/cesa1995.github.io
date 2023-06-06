@@ -3,9 +3,10 @@ import { StaticImageData } from "next/image";
 import { Dispatch, ReactNode, SetStateAction } from "react";
 
 export const indexSectionValues = {
-  primary: "#primary",
-  secondary: "#secondary",
-  tertiary: "#tertiary",
+  description: "#description",
+  projects: "#projects",
+  comments: "#comments",
+  knowledge: "#knowledge",
 };
 
 export type provider = {
@@ -22,7 +23,7 @@ export type waves = {
 };
 
 export type indexSection = {
-  id: "primary" | "secondary" | "tertiary";
+  id: "description" | "projects" | "comments" | "knowledge";
 };
 
 export type children = {

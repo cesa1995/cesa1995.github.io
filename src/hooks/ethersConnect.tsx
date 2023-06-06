@@ -1,7 +1,7 @@
 import abi from "@/utils/WavePortal.json";
-import { useEffect, useState } from "react";
-import { Eip1193Provider, ethers } from "ethers";
-import { provider, waves } from "@/utils/types";
+import { useState } from "react";
+import { AbstractProvider, Eip1193Provider, ethers } from "ethers";
+import { waves } from "@/utils/types";
 
 const useEtherConnect = () => {
   const [currentAccount, setCurrentAccount] = useState("");
@@ -11,40 +11,26 @@ const useEtherConnect = () => {
   const contractAddress = "0xA9B95D26F047C7701f58AEC2b93A7E8E570E3f72";
   const contractABI = abi.abi;
 
-  const init = async () => {
-    try {
-      const getEthereumObject = () => globalThis?.window?.ethereum;
-      const ethereum = getEthereumObject();
-      if (!ethereum) {
-        return;
-      }
+  const readOnlyContract = async () => {
+    const provider = ethers.getDefaultProvider(
+      "https://virulent-long-film.ethereum-sepolia.quiknode.pro/e24d1a32e7173b60186845f4db8ffa5874abdb23/"
+    );
 
-      const provider = new ethers.BrowserProvider(ethereum);
-      const signer = await provider.getSigner();
-      const wavePortalContract = new ethers.Contract(
-        contractAddress,
-        contractABI,
-        signer
-      );
+    const wavePortalContract = new ethers.Contract(
+      contractAddress,
+      contractABI,
+      provider
+    );
 
-      if (!currentAccount) {
-        connectWallet(ethereum);
-      }
-
-      return {
-        ethereum,
-        provider,
-        signer,
-        wavePortalContract,
-      };
-    } catch (e) {
-      return null;
-    }
+    return {
+      provider,
+      wavePortalContract,
+    };
   };
 
   const getWavesList = async (
     wavePortalContract: ethers.Contract,
-    provider: ethers.BrowserProvider
+    provider: ethers.BrowserProvider | AbstractProvider
   ) => {
     try {
       const balance = ethers.formatEther(
@@ -70,7 +56,15 @@ const useEtherConnect = () => {
     }
   };
 
-  const wave = async (wavePortalContract: ethers.Contract, message: string) => {
+  const wave = async (message: string) => {
+    if (!window.ethereum) return;
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const signer = await provider.getSigner();
+    const wavePortalContract = new ethers.Contract(
+      contractAddress,
+      contractABI,
+      signer
+    );
     const waveTxn = await wavePortalContract.wave(message, {
       gasLimit: 300000,
     });
@@ -80,22 +74,18 @@ const useEtherConnect = () => {
     console.log("Mined -- ", waveTxn.hash);
   };
 
-  const connectWallet = async (ethereum: Eip1193Provider) => {
-    try {
-      const accounts = await ethereum.request({
-        method: "eth_requestAccounts",
-      });
+  const connectWallet = async () => {
+    if (!window.ethereum) return;
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
 
-      console.log("Connected", accounts[0]);
-      setCurrentAccount(accounts[0]);
-    } catch (error) {
-      return error;
-    }
+    console.log("Connected", accounts[0]);
+    setCurrentAccount(accounts[0]);
   };
 
   const handleNewWave = async () => {
-    const provider = await init();
-    if (!provider) return;
+    const provider = await readOnlyContract();
     const contract = provider.wavePortalContract.on("NewWave", onNewWave);
     return contract;
   };
@@ -113,12 +103,21 @@ const useEtherConnect = () => {
     ]);
   };
 
+  const loadData = async () => {
+    try {
+      const provider = await readOnlyContract();
+      await getWavesList(provider.wavePortalContract, provider.provider);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return {
-    init,
-    getWavesList,
     wave,
     handleNewWave,
     onNewWave,
+    loadData,
+    connectWallet,
     currentAccount,
     allWaves,
     count,

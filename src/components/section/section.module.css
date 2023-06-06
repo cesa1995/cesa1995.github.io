@@ -8,3 +8,20 @@
   scroll-snap-align: center;
   perspective: 500px;
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: 100%;
+  }
+  .section {
+    flex-direction: column;
+    height: 80vh;
+    justify-content: center;
+  }
+}

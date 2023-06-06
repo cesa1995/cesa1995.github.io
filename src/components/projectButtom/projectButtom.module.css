@@ -1,5 +1,5 @@
 .listItem {
-  background: #000;
+  background: linear-gradient(150deg, #595656, #302f2f, #000);
   color: #fff;
   border: none;
   padding: 15px 25px;
@@ -7,12 +7,21 @@
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
+  box-shadow: 10px 10px 10px -3px rgba(0, 0, 0, 0.48);
+  font-family: "Righteous";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
 }
 
 .box {
-  width: 40vw;
-  height: 40vw;
-  border-radius: 50%;
+  width: 38vw;
+  height: 38vw;
+  border-radius: 10%;
   background: #000;
   margin: 0;
   position: absolute;
@@ -22,6 +31,7 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  box-shadow: 10px 10px 10px -3px rgba(0, 0, 0, 0.48);
 }
 
 .projectImage {
@@ -35,9 +45,56 @@
 
 .title {
   color: #fff;
+  font-family: "Righteous";
 }
 
 .text {
   color: #fff;
-  width: 15vw;
+  width: 16vw;
+  font-size: 15px;
+  font-family: "Hind Siliguri";
+}
+
+.buttomsIcon {
+  width: 30px;
+  height: auto;
+  margin-right: 5px;
+}
+
+@media (max-width: 1000px) {
+  .text {
+    font-size: 1.5vw;
+    width: 50vw;
+  }
+  .title {
+    font-size: 3vw;
+  }
+  .listItem {
+    padding: 5px 15px;
+    font-size: 2vw;
+  }
+  .box {
+    width: 55vw;
+    height: 55vw;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    top: 8vh;
+    margin: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .text {
+    font-size: 2.3vw;
+    width: 33vw;
+  }
+  .box {
+    width: 44vw;
+    height: 85vw;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+  }
 }

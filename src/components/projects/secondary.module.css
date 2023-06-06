@@ -1,0 +1,19 @@
+.projectList {
+  list-style-type: none;
+  margin-right: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.projectList > li {
+  margin: 10px;
+}
+
+@media (max-width: 1000px) {
+  .projectList {
+    margin-right: 0;
+  }
+}

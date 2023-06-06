@@ -4,9 +4,10 @@ import Layout from "../components/layout";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 import style from "./page.module.css";
-import Primary from "@/components/primary";
-import Secondary from "@/components/secondary";
-import Tertiary from "@/components/tertiary";
+import Description from "@/components/description";
+import Projects from "@/components/projects";
+import Comments from "@/components/comments";
+import Knowledge from "@/components/knowledge";
 
 const Home: NextPageWithLayout = () => {
   const { scrollYProgress } = useScroll();
@@ -17,9 +18,10 @@ const Home: NextPageWithLayout = () => {
   });
   return (
     <>
-      <Primary id="primary" />
-      <Secondary id="secondary" />
-      <Tertiary id="tertiary" />
+      <Description id="description" />
+      <Knowledge id="knowledge" />
+      <Projects id="projects" />
+      <Comments id="comments" />
       <motion.div className={style.progress} style={{ scaleX }} />
     </>
   );

@@ -10,3 +10,9 @@
   align-items: center;
   color: #fff;
 }
+
+.icon {
+  width: 40px;
+  height: auto;
+  margin: 10px;
+}

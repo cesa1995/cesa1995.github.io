@@ -1,0 +1,86 @@
+.container {
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.buttom {
+  background: linear-gradient(150deg, #595656, #302f2f, #000);
+  color: #fff;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Righteous";
+  cursor: pointer;
+  box-shadow: 10px 10px 10px -3px rgba(0, 0, 0, 0.48);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  max-height: 500px;
+  overflow: scroll;
+  margin-left: 1vw;
+}
+
+.input {
+  margin-right: 20px;
+  width: 20vw;
+  height: 20vh;
+}
+
+.title {
+  font-family: "Righteous";
+}
+
+.text {
+  font-family: "Hind Siliguri";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttomsIcon {
+  width: 30px;
+  height: auto;
+  margin-right: 5px;
+}
+.chat {
+  border-radius: 10px;
+  margin: 16px;
+  padding: 8px;
+  color: #fff;
+  font-family: Hind Siliguri;
+  font-size: 14px;
+  background: linear-gradient(150deg, #595656, #302f2f, #000);
+  box-shadow: 10px 10px 10px -3px rgba(0, 0, 0, 0.48);
+}
+
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .input {
+    width: 80vw;
+    height: 5vh;
+  }
+  .message {
+    max-height: 250px;
+    width: 100vw;
+    margin-left: 0;
+  }
+  .buttomsIcon {
+    width: 20px;
+  }
+  .buttom {
+    font-size: 12px;
+  }
+  .chat {
+    font-size: 3vw;
+  }
+}

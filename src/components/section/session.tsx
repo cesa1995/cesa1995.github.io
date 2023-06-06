@@ -17,11 +17,13 @@ const Section = ({
 }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
-  const y = useParallax(scrollYProgress, 300);
+  const y = useParallax(scrollYProgress, 50);
   return (
     <section className={style.section} id={id}>
-      <div ref={ref}>{children}</div>
-      <motion.h2 style={{ y }}>{`${name}`}</motion.h2>
+      <div className={style.container} ref={ref}>
+        {children}
+      </div>
+      <motion.h2 style={{ y, fontFamily: "Righteous" }}>{`${name}`}</motion.h2>
     </section>
   );
 };

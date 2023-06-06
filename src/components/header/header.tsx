@@ -7,17 +7,22 @@ export default function Header() {
     <div className={style.container}>
       <ul className={style.list}>
         <li>
-          <Link className={style.link} href={indexSectionValues.primary}>
+          <Link className={style.link} href={indexSectionValues.description}>
             About Me
           </Link>
         </li>
         <li>
-          <Link className={style.link} href={indexSectionValues.secondary}>
+          <Link className={style.link} href={indexSectionValues.knowledge}>
+            Knowledge
+          </Link>
+        </li>
+        <li>
+          <Link className={style.link} href={indexSectionValues.projects}>
             Projects
           </Link>
         </li>
         <li>
-          <Link className={style.link} href={indexSectionValues.tertiary}>
+          <Link className={style.link} href={indexSectionValues.comments}>
             Learning
           </Link>
         </li>

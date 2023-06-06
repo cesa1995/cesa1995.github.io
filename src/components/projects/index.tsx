@@ -10,7 +10,7 @@ import Scoby from "@/assets/scoby.jpeg";
 import PillCare from "@/assets/pill&care.png";
 import Osp from "@/assets/osp.png";
 
-const Secondary = ({ id }: indexSection) => {
+const Projects = ({ id }: indexSection) => {
   const [isVisible, setIsVisible] = useState<buttomActive>("Smart Leaf");
 
   return (
@@ -101,4 +101,4 @@ const Secondary = ({ id }: indexSection) => {
   );
 };
 
-export default Secondary;
+export default Projects;

@@ -2,6 +2,7 @@ import style from "./projectButtom.module.css";
 import { projectButtom } from "@/utils/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import NewPaperIcon from "@/assets/newPaperIcon.svg";
 
 const show = {
   left: 0,
@@ -35,7 +36,7 @@ const ProjectButtom = ({
   image,
 }: projectButtom) => {
   return (
-    <div>
+    <div className={style.container}>
       <motion.div
         className={style.box}
         animate={isVisible === text ? show : hide}
@@ -56,6 +57,11 @@ const ProjectButtom = ({
         whileTap={{ scale: 0.6 }}
         onClick={() => setIsVisible(text)}
       >
+        <Image
+          className={style.buttomsIcon}
+          src={NewPaperIcon}
+          alt="new paper icon"
+        />
         {text}
       </motion.button>
     </div>
