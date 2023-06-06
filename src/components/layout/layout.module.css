@@ -1,0 +1,9 @@
+.background {
+  width: 100vw;
+  height: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  opacity: 0.2;
+  z-index: -1;
+}

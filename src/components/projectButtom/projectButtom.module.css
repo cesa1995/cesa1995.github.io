@@ -1,0 +1,43 @@
+.listItem {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.box {
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  background: #000;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.projectImage {
+  width: 20vw;
+  height: 20vw;
+  object-fit: cover;
+  object-position: 50% 20%;
+  border-radius: 50% 50% 50% 0%;
+  transform: translate(20%, -20%);
+}
+
+.title {
+  color: #fff;
+}
+
+.text {
+  color: #fff;
+  width: 15vw;
+}

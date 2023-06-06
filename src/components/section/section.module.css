@@ -1,0 +1,10 @@
+.section {
+  height: 70vh;
+  display: flex;
+  justify-content: flex-end;
+  margin: 8vw;
+  align-items: center;
+  position: relative;
+  scroll-snap-align: center;
+  perspective: 500px;
+}
