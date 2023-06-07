@@ -1,23 +1,21 @@
 import abi from "@/utils/WavePortal.json";
 import { useState } from "react";
-import { AbstractProvider, Eip1193Provider, ethers } from "ethers";
+import { AbstractProvider, ethers } from "ethers";
 import { waves } from "@/utils/types";
+import { CLUSTER_URL, CONTRACT_ADDRESS } from "@/config";
 
 const useEtherConnect = () => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [allWaves, setAllWaves] = useState<waves[]>([]);
   const [count, setCount] = useState(0);
   const [balance, setBalance] = useState("0");
-  const contractAddress = "0xA9B95D26F047C7701f58AEC2b93A7E8E570E3f72";
   const contractABI = abi.abi;
 
   const readOnlyContract = async () => {
-    const provider = ethers.getDefaultProvider(
-      "https://virulent-long-film.ethereum-sepolia.quiknode.pro/e24d1a32e7173b60186845f4db8ffa5874abdb23/"
-    );
+    const provider = ethers.getDefaultProvider(CLUSTER_URL);
 
     const wavePortalContract = new ethers.Contract(
-      contractAddress,
+      CONTRACT_ADDRESS,
       contractABI,
       provider
     );
@@ -34,7 +32,7 @@ const useEtherConnect = () => {
   ) => {
     try {
       const balance = ethers.formatEther(
-        await provider.getBalance(contractAddress)
+        await provider.getBalance(CONTRACT_ADDRESS)
       );
       setBalance(balance);
       const waves = await wavePortalContract.getAllWaves();
@@ -61,7 +59,7 @@ const useEtherConnect = () => {
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
     const wavePortalContract = new ethers.Contract(
-      contractAddress,
+      CONTRACT_ADDRESS,
       contractABI,
       signer
     );
