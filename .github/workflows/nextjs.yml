@@ -74,12 +74,12 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: echo variables
-        run: echo "${{vars.NEXT_PUBLIC_CONTRACT_ADDRESS}} and ${{vars.NEXT_PUBLIC_CLUSTER_URL}}"
+        run: echo "${{env.NEXT_PUBLIC_CONTRACT_ADDRESS}} and ${{env.NEXT_PUBLIC_CLUSTER_URL}}"
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
-          NEXT_PUBLIC_CONTRACT_ADDRESS: ${{ vars.NEXT_PUBLIC_CONTRACT_ADDRESS }}
-          NEXT_PUBLIC_CLUSTER_URL: ${{ vars.NEXT_PUBLIC_CLUSTER_URL }}
+          NEXT_PUBLIC_CONTRACT_ADDRESS: ${{ env.NEXT_PUBLIC_CONTRACT_ADDRESS }}
+          NEXT_PUBLIC_CLUSTER_URL: ${{ env.NEXT_PUBLIC_CLUSTER_URL }}
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
