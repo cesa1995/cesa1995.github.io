@@ -11,8 +11,6 @@ const useEtherConnect = () => {
   const [balance, setBalance] = useState("0");
   const contractABI = abi.abi;
 
-  console.log(CLUSTER_URL);
-
   const readOnlyContract = async () => {
     const provider = ethers.getDefaultProvider(CLUSTER_URL);
 
