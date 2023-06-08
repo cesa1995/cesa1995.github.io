@@ -74,6 +74,7 @@ const useEtherConnect = () => {
 
   const connectWallet = async () => {
     if (!window.ethereum) return;
+
     const accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
@@ -105,6 +106,7 @@ const useEtherConnect = () => {
     try {
       const provider = await readOnlyContract();
       await getWavesList(provider.wavePortalContract, provider.provider);
+      await connectWallet();
     } catch (e) {
       console.log(e);
     }
