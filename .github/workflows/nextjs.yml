@@ -25,8 +25,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  NEXT_PUBLIC_CONTRACT_ADDRESS: "0x98096aDAD9dC263b21239B5Efa9A9A4483dF9791"
-  NEXT_PUBLIC_CLUSTER_URL: "https://virulent-long-film.ethereum-sepolia.quiknode.pro/e24d1a32e7173b60186845f4db8ffa5874abdb23/"
+  NEXT_PUBLIC_CONTRACT_ADDRESS: ${{secrets.NEXT_PUBLIC_CLUSTER_URL}}
+  NEXT_PUBLIC_CLUSTER_URL: ${{secrets.NEXT_PUBLIC_CONTRACT_ADDRESS}}
 
 jobs:
   # Build job
