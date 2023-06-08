@@ -24,6 +24,10 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  NEXT_PUBLIC_CONTRACT_ADDRESS: 0x98096aDAD9dC263b21239B5Efa9A9A4483dF9791
+  NEXT_PUBLIC_CLUSTER_URL: https://virulent-long-film.ethereum-sepolia.quiknode.pro/e24d1a32e7173b60186845f4db8ffa5874abdb23/
+
 jobs:
   # Build job
   build:
@@ -73,14 +77,13 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: $NEXT_PUBLIC_CLUSTER_URL
+        run: echo "$NEXT_PUBLIC_CONTRACT_ADDRESS"
       - name: Build with Next.js
-        run: |
-          echo "adress $NEXT_PUBLIC_CONTRACT_ADDRESS"
-          echo "cluster $NEXT_PUBLIC_CLUSTER_URL"
-          ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
-          NEXT_PUBLIC_CONTRACT_ADDRESS: ${{ secrets.NEXT_PUBLIC_CONTRACT_ADDRESS }}
-          NEXT_PUBLIC_CLUSTER_URL: ${{ secrets.NEXT_PUBLIC_CLUSTER_URL }}
+          NEXT_PUBLIC_CONTRACT_ADDRESS: $NEXT_PUBLIC_CONTRACT_ADDRESS
+          NEXT_PUBLIC_CLUSTER_URL: $NEXT_PUBLIC_CLUSTER_URL
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
