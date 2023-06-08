@@ -77,13 +77,14 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: $NEXT_PUBLIC_CLUSTER_URL
+      - name: "$NEXT_PUBLIC_CLUSTER_URL"
         run: echo "$NEXT_PUBLIC_CONTRACT_ADDRESS"
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
-        env:
-          NEXT_PUBLIC_CONTRACT_ADDRESS: $NEXT_PUBLIC_CONTRACT_ADDRESS
-          NEXT_PUBLIC_CLUSTER_URL: $NEXT_PUBLIC_CLUSTER_URL
+        run: |
+          touch .env.local
+          echo NEXT_PUBLIC_CONTRACT_ADDRESS=$NEXT_PUBLIC_CONTRACT_ADDRESS >> .env.local
+          echo NEXT_PUBLIC_CLUSTER_URL=$NEXT_PUBLIC_CLUSTER_URL >> .env.local
+          ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact

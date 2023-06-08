@@ -19,7 +19,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <Head>
         <style>
           @import
-          url(&apos;https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&family=Righteous&display=swap&apos;);
+          url(https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&family=Righteous&display=swap);
         </style>
       </Head>
       <Component {...pageProps} />
